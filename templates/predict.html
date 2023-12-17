@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Predict{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>Prediction</h1>
+  <form method="post" action="/predict">
+    <label for="age">Age:</label>
+    <input type="number" name="age" required>
+
+    <label for="gender">Gender:</label>
+    <select name="gender" required>
+      <option value="0">Male</option>
+      <option value="1">Female</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if predictions %}
+    <h2>Prediction:</h2>
+    <p>{{ predictions }}</p>
+  {% endif %}
+{% endblock %}

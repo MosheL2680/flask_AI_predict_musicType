@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>Learn</h1>
+  <form method="post" action="/learn">
+    <label for="age">Age:</label>
+    <input type="number" name="age" required>
+
+    <label for="gender">Gender:</label>
+    <select name="gender" required>
+      <option value="0">Male</option>
+      <option value="1">Female</option>
+    </select>
+
+    <label for="music">Music type:</label>
+    <select name="genre" required>
+      <option value="HipHop">HipHop</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Classical">Classical</option>
+      <option value="Dance">Dance</option>
+      <option value="Acoustic">Acoustic</option>
+      <option value="Rock">Rock</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if done %}
+  <p>Data added successfuly. Thanks for helping me learning!</p>
+{% endif %}
+{% endblock %}

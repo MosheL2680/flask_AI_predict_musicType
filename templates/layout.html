@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+
+<body style="text-align: center;">
+    <div>
+        <ul>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="predict">Predict</a></li>
+            <li><a href="learn">Learn</a></li>
+        </ul>
+    </div>
+
+    <div>{% block content %}{% endblock %}</div>
+
+    <div
+        style="position: fixed; bottom: 0%; text-align: center; width: 100%; padding: 15px; background-color: black; color:white">
+        {% block footer %}
+        &copy; Copyright 2023 by Moshe Lubetzki
+        {% endblock %}
+    </div>
+</body>
+
+</html>
