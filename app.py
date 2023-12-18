@@ -20,9 +20,10 @@ def predict():
         # Get user input for age and gender from the form
         age = int(request.form['age'])
         gender = int(request.form['gender'])
+        fav = str(request.form['fav'])
 
         # Make predictions based on user input
-        user_input = [[age, gender]]
+        user_input = [[age, gender, fav]]
         
         model=joblib.load( 'our_pridction.joblib')
 
@@ -38,10 +39,11 @@ def learn():
     if request.method == 'POST':
         age = int(request.form['age'])
         gender = int(request.form['gender'])
+        fav = int(request.form['fav'])
         genre = str(request.form['genre'])
         
         music_dt = pd.read_csv('music.csv') # Load existing CSV file into a DataFrame
-        new_row_dict = {'age': age, 'gender': gender, 'genre': genre}# Create a new row as a dictionary or list
+        new_row_dict = {'age': age, 'gender': gender,'fav': fav, 'genre': genre}# Create a new row as a dictionary or list
         music_dt = music_dt._append  (new_row_dict, ignore_index=True)# Append the new row to the DataFrame
         music_dt.to_csv('music.csv', index=False)# Save the updated DataFrame back to the CSV file
         

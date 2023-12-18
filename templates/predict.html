@@ -1,27 +1,38 @@
 {% extends "layout.html" %}
 {% block title %}Predict{% endblock %}
 {% block head %}
-  {{ super() }}
-  <style type="text/css">
-  </style>
+{{ super() }}
+<style type="text/css">
+</style>
 {% endblock %}
 {% block content %}
-  <h1>Prediction</h1>
-  <form method="post" action="/predict">
-    <label for="age">Age:</label>
-    <input type="number" name="age" required>
+<h1>Prediction</h1>
+<form method="post" action="/predict">
+  <label for="age">Age:</label>
+  <input style="width: 40px;" type="number" name="age" required><br>
 
-    <label for="gender">Gender:</label>
-    <select name="gender" required>
-      <option value="0">Male</option>
-      <option value="1">Female</option>
-    </select>
+  <label for="gender">Gender:</label>
+  <select name="gender" required>
+    <option value="0">Male</option>
+    <option value="1">Female</option>
+  </select><br>
 
-    <button type="submit">Submit</button>
-  </form>
+  <label for="fav">Favorite singer:</label>
+  <select name="fav" required>
+    <option value="0">DuaLipa</option>
+    <option value="1">50-Cent</option>
+    <option value="2">Nina Simone</option>
+    <option value="3">Luciano Pavarotti</option>
+    <option value="4">Michael Jackson</option>
+    <option value="5">Ed Sheeran</option>
+    <option value="6">Eminem</option>
+  </select><br>
 
-  {% if predictions %}
-    <h2>Prediction:</h2>
-    <p>{{ predictions }}</p>
-  {% endif %}
+  <button type="submit">Predict</button>
+</form>
+
+{% if predictions %}
+<h2>Your music type prediction is:</h2>
+<p>{{ predictions }}</p>
+{% endif %}
 {% endblock %}
